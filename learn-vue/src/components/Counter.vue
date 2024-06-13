@@ -30,6 +30,19 @@
 
 
         <button @click="getvalue">获取文本框值</button>
+
+        <p>Original message: "{{ message }}"</p>
+        <p>Computed reversed message: "{{ reversedMessage }}"</p>
+
+        <div id="demo">full name: {{ fullName }}</div>
+
+        <div id="watch-example">
+            <p>
+                Ask a yes/no question:
+                <input v-model="question">
+            </p>
+            <p>{{ answer }}</p>
+        </div>
     </div>
 </template>
 
@@ -53,7 +66,10 @@ export default {
             type: 'A',
             awesome: true,
             items: [{ message: 'Foo' }, { message: 'Bar' }],
-            message: 'test'
+            message: 'test',
+            firstName: 'Foo',
+            lastName: 'Bar',
+            fullName: 'Foo Bar'
         }
     },
     methods: {
@@ -63,7 +79,23 @@ export default {
         },
         getvalue() {
             console.log(this.message) // =>
+        },
+
+    },
+    computed: {
+        // 计算属性的 getter
+        reversedMessage: function () {
+            // `this` 指向 vm 实例
+            return this.message.split('').reverse().join('')
         }
+    },
+    watch: {
+        firstName: function (val) {
+            this.fullName = val + ' ' + this.lastName
+        },
+        lastName: function (val) {
+            this.fullName = this.firstName + ' ' + val
+        },
     },
     mounted() {
         // `this` 指向当前组件实例
