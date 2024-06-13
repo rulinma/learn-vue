@@ -4,6 +4,7 @@
     <HelloWorld msg="You are welcome to VUE" />
     <!-- <Counter counter=1> </Counter> -->
     <Counter> </Counter>
+    <Counter> </Counter>
   </div>
 </template>
 
