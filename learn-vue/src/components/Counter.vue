@@ -25,7 +25,11 @@
         <li v-for="(item, index) in items" :key="item.message">
             {{ index }} - {{ item.message }}
         </li>
-        <!-- <h1 v-show="ok">Hello!</h1> -->
+        <p>Message is: {{ message }}</p>
+        <input v-model="message" placeholder="edit me" />
+
+
+        <button @click="getvalue">获取文本框值</button>
     </div>
 </template>
 
@@ -48,13 +52,17 @@ export default {
             },
             type: 'A',
             awesome: true,
-            items: [{ message: 'Foo' }, { message: 'Bar' }]
+            items: [{ message: 'Foo' }, { message: 'Bar' }],
+            message: 'test'
         }
     },
     methods: {
         increment() {
             console.log(this.counter) // => 1
             this.counter++
+        },
+        getvalue() {
+            console.log(this.message) // =>
         }
     },
     mounted() {
