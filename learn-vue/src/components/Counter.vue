@@ -39,7 +39,7 @@
         <div id="watch-example">
             <p>
                 Ask a yes/no question:
-                <input v-model="question">
+                <input v-model="question" :disabled="loading" />
             </p>
             <p>{{ answer }}</p>
         </div>
@@ -69,7 +69,10 @@ export default {
             message: 'test',
             firstName: 'Foo',
             lastName: 'Bar',
-            fullName: 'Foo Bar'
+            fullName: 'Foo Bar',
+            question: '',
+            answer: 'Questions usually contain a question mark. ;-)',
+            loading: false,
         }
     },
     methods: {
@@ -80,7 +83,18 @@ export default {
         getvalue() {
             console.log(this.message) // =>
         },
-
+        async getAnswer() {
+            this.loading = true
+            this.answer = 'Thinking...'
+            try {
+                const res = await fetch('https://yesno.wtf/api')
+                this.answer = (await res.json()).answer
+            } catch (error) {
+                this.answer = 'Error! Could not reach the API. ' + error
+            } finally {
+                this.loading = false
+            }
+        }
     },
     computed: {
         // 计算属性的 getter
@@ -96,6 +110,13 @@ export default {
         lastName: function (val) {
             this.fullName = this.firstName + ' ' + val
         },
+        // whenever question changes, this function will run
+        // eslint-disable-next-line no-unused-vars
+        question(newQuestion, oldQuestion) {
+            if (newQuestion.includes('?')) {
+                this.getAnswer()
+            }
+        }
     },
     mounted() {
         // `this` 指向当前组件实例
