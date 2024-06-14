@@ -5,18 +5,21 @@
     <!-- <Counter counter=1> </Counter> -->
     <Counter> </Counter>
     <!-- <Counter> </Counter> -->
+    <BlogCom></BlogCom>
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
 import Counter from './components/Counter.vue'
+import BlogCom from './components/BlogCom.vue'
 
 export default {
   name: 'App',
   components: {
     HelloWorld,
-    Counter
+    Counter,
+    BlogCom
   }
 }
 </script>
