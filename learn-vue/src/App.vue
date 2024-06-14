@@ -6,6 +6,10 @@
     <Counter> </Counter>
     <!-- <Counter> </Counter> -->
     <BlogCom></BlogCom>
+    <AlertBox>
+      <p>ssss</p>
+      Something bad happened.
+    </AlertBox>
   </div>
 </template>
 
@@ -13,13 +17,15 @@
 import HelloWorld from './components/HelloWorld.vue'
 import Counter from './components/Counter.vue'
 import BlogCom from './components/BlogCom.vue'
+import AlertBox from './components/AlertBox.vue'
 
 export default {
   name: 'App',
   components: {
     HelloWorld,
     Counter,
-    BlogCom
+    BlogCom,
+    AlertBox
   }
 }
 </script>
