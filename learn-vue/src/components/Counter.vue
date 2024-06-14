@@ -117,6 +117,9 @@ export default {
                 this.getAnswer()
             }
         }
+        // once
+        // 强制立即执行回调
+        // immediate: true
     },
     mounted() {
         // `this` 指向当前组件实例
