@@ -25,6 +25,6 @@ router.beforeEach((to, from, next) => {
     console.log(to, from, next);
     console.log("Starting");
 })
-  
+
 
 export default router
