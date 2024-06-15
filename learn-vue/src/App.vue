@@ -10,6 +10,16 @@
       <p>ssss</p>
       Something bad happened.
     </AlertBox>
+
+    <h3>Vue.js Router</h3>
+    <router-link to="/">Index</router-link>
+    |
+    <router-link to="/home">Home</router-link>
+    |
+    <router-link to="/about">About</router-link>
+    <br /><br />
+    <router-view></router-view>
+
   </div>
 </template>
 
@@ -25,9 +35,10 @@ export default {
     HelloWorld,
     Counter,
     BlogCom,
-    AlertBox
+    AlertBox,
   }
 }
+
 </script>
 
 <style>
